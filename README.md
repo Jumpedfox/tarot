@@ -1,3 +1,6 @@
+This is my React Native pet project. This application allows you to perform tarot card readings.
+With its help, you can draw 1 or 3 tarot cards and receive interpretations. Additionally, interpretation will be available using ChatGPT if its support extends my temporary quota.
+
 ANNDROID
 
 Scan the following QR code with an Android device to open it in Expo Go or a development build.
