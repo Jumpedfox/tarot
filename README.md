@@ -1,4 +1,4 @@
-#ANNDROID
+ANNDROID
 
 Scan the following QR code with an Android device to open it in Expo Go or a development build.
 
@@ -8,7 +8,7 @@ Or, open this link on your device:
 exp://u.expo.dev/update/3ba00fa4-1e06-4dd2-b0d6-1204fff5661f
 
 
-#IOS
+IOS
 
 Scan the following QR code with an iOS device to open it in Expo Go or a development build.
 
