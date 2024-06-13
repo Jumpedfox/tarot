@@ -3,8 +3,6 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Platform,
-  ImageBackground,
   Image,
 } from "react-native";
 import React, {
@@ -41,7 +39,7 @@ export type BottomSheetRefProps = {
 };
 
 const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
-  ({ children }, ref) => {
+  ({}, ref) => {
     const translateY = useSharedValue(0);
     const active = useSharedValue(false);
 
@@ -309,7 +307,6 @@ const BottomSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(
               source={{
                 uri: "https://firebasestorage.googleapis.com/v0/b/tarot-api-708a1.appspot.com/o/sun.png?alt=media&token=f94bde26-19f1-4a98-a71c-c70162d912ef",
               }}
-              // @ts-ignore
               style={{
                 position: "absolute",
                 bottom: -100,

@@ -1,4 +1,4 @@
-import { Button, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { toggleShowLoader } from "../../redux/reducers";
 import { useDispatch } from "react-redux";
 import { Audio } from "expo-av";

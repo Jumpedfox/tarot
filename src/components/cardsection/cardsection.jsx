@@ -1,14 +1,9 @@
 import {
-  Button,
-  Dimensions,
-  Image,
   ImageBackground,
   Text,
   TouchableOpacity,
-  View,
-  ViewBase,
 } from "react-native";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import { Animated } from "react-native";
 

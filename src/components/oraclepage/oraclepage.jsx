@@ -1,18 +1,12 @@
-import { StatusBar } from "expo-status-bar";
 import { useEffect, useRef, useState } from "react";
 import {
-  Button,
   Dimensions,
-  Image,
   ImageBackground,
   Text,
   TouchableOpacity,
   View,
-  ViewBase,
 } from "react-native";
-
 import { useSelector } from "react-redux";
-
 import cards from "../../../tarot-api-708a1-default-rtdb-export.json";
 import { Animated } from "react-native";
 import CardSection from "../cardsection/cardsection";
@@ -20,11 +14,9 @@ import CardMeaning from "../cardmeaning/cardmeaning";
 import BigCard from "../cardbig/cardbig";
 import BackButton from "../backbutton/backbutton";
 import { LinearGradient } from "expo-linear-gradient";
-import axios from "axios";
 
 const Oracle3Page = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
-  const windowHeight = Dimensions.get("window").height;
 
   const [randomCard1, setRandomCard1] = useState("");
   const [randomCard2, setRandomCard2] = useState("");
@@ -47,8 +39,6 @@ const Oracle3Page = ({ navigation }) => {
   const [meaningIsAvailable, setMeaningIsAvailable] = useState(false);
 
   const [showMeaningIsTrue, setShowMeaningIsTrue] = useState(false);
-
-  const [meaningPrompt, setMeaningPrompt] = useState("");
 
   const divinationCardsAmount = useSelector(
     (state) => state.interfaceSlice.divinationCardsAmount
@@ -74,7 +64,6 @@ const Oracle3Page = ({ navigation }) => {
     if (showMeaningIsTrue) {
       fadeOut2();
       fadeIn();
-      setMeaningPrompt("");
       setTimeout(() => {
         setShowMeaningIsTrue(false);
       }, 500);
@@ -138,7 +127,7 @@ const Oracle3Page = ({ navigation }) => {
 
   const [card1Position, setCard1Position] = useState(0);
 
-  handleSetCard1Position = () => {
+  const handleSetCard1Position = () => {
     const degree = Math.round(Math.random() * 20);
     if (Math.round(Math.random() * 1) === 1) {
       setCard1Position(degree);
@@ -199,7 +188,6 @@ const Oracle3Page = ({ navigation }) => {
     }, 500);
   };
 
-  const API_KEY = "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";
   const [meaning, setMeaning] = useState("");
 
   useEffect(() => {

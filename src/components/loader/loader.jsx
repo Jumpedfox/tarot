@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Dimensions, View, Text } from "react-native";
+import { Dimensions } from "react-native";
 import { Animated } from "react-native";
 import { Portal } from "react-native-paper";
 import { toggleTransitionAnimationZoom } from "../../redux/reducers";

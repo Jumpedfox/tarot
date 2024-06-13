@@ -1,16 +1,10 @@
 import {
-  Button,
   Dimensions,
-  FlatList,
   Image,
-  ImageBackground,
   Text,
-  TouchableOpacity,
-  View,
-  ViewBase,
-  TextInput,
+  View
 } from "react-native";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
@@ -28,45 +22,45 @@ const CardMeaning = ({
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
 
-  const [meaningPrompt, setMeaningPrompt] = useState("");
-
   const divinationCardsAmount = useSelector(
     (state) => state.interfaceSlice.divinationCardsAmount
   );
 
-  const API_KEY = "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";
+  // const API_KEY = "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";
 
-  // const loadMeaning = async () => {
-  //   const response = await axios.post(
-  //     "https://api.openai.com/v1/completions",
-  //     {
-  //       prompt:
-  //         divinationCardsAmount === 3
-  //           ? `My tarot devinition is: "${isCard1Rotated && "rotated "} ${
-  //               card1.name
-  //             }", "${isCard2Rotated && "rotated "}${card2.name}", "${
-  //               isCard2Rotated && "rotated "
-  //             }${card3.name}". Give me an advice depends on cards.`
-  //           : `My tarot devinition is "${isCard1Rotated && "rotated "} ${
-  //               card1.name
-  //             }". Give me an advice depends on this card.`,
-  //       model: "text-davinci-003",
-  //       max_tokens: 150,
-  //       temperature: 1,
-  //     },
-  //     {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${API_KEY}`,
-  //       },
-  //     }
-  //   );
-  //   setMeaning(response.data.choices[0].text);
-  // };
+  // ********* ChatGPT requests *********
 
-  // useEffect(() => {
-  //   !meaning && loadMeaning();
-  // }, []);
+  const loadMeaning = async () => {
+    const response = await axios.post(
+      "https://api.openai.com/v1/completions",
+      {
+        prompt:
+          divinationCardsAmount === 3
+            ? `My tarot devinition is: "${isCard1Rotated && "rotated "} ${
+                card1.name
+              }", "${isCard2Rotated && "rotated "}${card2.name}", "${
+                isCard2Rotated && "rotated "
+              }${card3.name}". Give me an advice depends on cards.`
+            : `My tarot devinition is "${isCard1Rotated && "rotated "} ${
+                card1.name
+              }". Give me an advice depends on this card.`,
+        model: "text-davinci-003",
+        max_tokens: 150,
+        temperature: 1,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      }
+    );
+    setMeaning(response.data.choices[0].text);
+  };
+
+  useEffect(() => {
+    !meaning && loadMeaning();
+  }, []);
 
   return (
     <View
@@ -167,15 +161,14 @@ const CardMeaning = ({
           marginBottom: 20,
         }}
       />
-      {/* {meaning && (
+      {meaning && (
         <Text style={[textStyle, { marginTop: -80 }]}>{meaning}</Text>
-      )} */}
+      )}
       <Text style={textStyle}>
-        AI divination interpretation is not available now due to the license
+        AI divination interpretation is not available now due to the chatGPT license
         issue. My apologies!
       </Text>
       <Image
-        onPress={() => loadMeaning()}
         source={{
           uri: "https://firebasestorage.googleapis.com/v0/b/tarot-api-708a1.appspot.com/o/moon-and-stars.png?alt=media&token=d819adf6-0202-4ddb-9045-3fcebe24525d",
         }}

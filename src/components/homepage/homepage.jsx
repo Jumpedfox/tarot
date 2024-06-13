@@ -1,25 +1,16 @@
-import { Button, Dimensions, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
 import { useEffect, useState } from "react";
-import { loadFont } from "../../helpers/useFonts";
-import React, { useCallback, useRef } from "react";
 import { Audio } from "expo-av";
 import BackButton from "../backbutton/backbutton";
 import Loader from "../loader/loader";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Oracle1Page from "../oracle1page/oracle1page";
-import Oracle3Page from "../oracle3page/oracle3page";
+import OraclePage from "../oraclepage/oraclepage";
 import MainMenu from "../mainmenu/mainmenu";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { _DEFAULT_INITIAL_PLAYBACK_STATUS } from "expo-av/build/AV";
-import { changeVolume } from "../../redux/reducers/index";
 
 const HomePage = ({ navigation }) => {
   const Stack = createNativeStackNavigator();
-  const dispatch = useDispatch();
-
-  const windowWidth = Dimensions.get("window").width;
-  const windowHeight = Dimensions.get("window").height;
-
   const options = {
     headerShown: false,
   };
@@ -62,13 +53,9 @@ const HomePage = ({ navigation }) => {
   return (
     <>
       {loaderIsOn && <Loader />}
-      <Stack.Navigator>        
+      <Stack.Navigator>
         <Stack.Screen name="Menu" component={MainMenu} options={options} />
-        <Stack.Screen
-          name="Oracle"
-          component={Oracle3Page}
-          options={options}
-        />
+        <Stack.Screen name="Oracle" component={OraclePage} options={options} />
       </Stack.Navigator>
     </>
   );

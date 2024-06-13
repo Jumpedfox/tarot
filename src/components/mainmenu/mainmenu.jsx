@@ -6,11 +6,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useEffect, useState } from "react";
-import { loadFont } from "../../helpers/useFonts";
+import { useState } from "react";
 import React, { useCallback, useRef } from "react";
 import { Audio } from "expo-av";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   toggleShowLoader,
   setDivinationCardsAmount,
@@ -25,15 +24,6 @@ const MainMenu = ({ navigation }) => {
   const ref = useRef(null);
 
   const dispatch = useDispatch();
-
-  const onPress = useCallback(() => {
-    const isActive = ref?.current?.isActive();
-    if (isActive) {
-      ref?.current?.scrollTo(0);
-    } else {
-      ref?.current?.scrollTo(-200);
-    }
-  }, []);
 
   const sound = new Audio.Sound();
   const clickSound = async () => {
